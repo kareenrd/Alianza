@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
 import { ModalComponent } from './modal/modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { LogsComponent } from './logs/logs.component';
 
 
 @NgModule({
@@ -19,15 +21,18 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeroesComponent,
     MenuComponent,
     ModalComponent,
+    LogsComponent,
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
 
   ],
   providers: [],

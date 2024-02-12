@@ -15,6 +15,7 @@ export class HeroService {
   //private auth = 'ts=thesoer&apikey=001ac6c73378bbfff488a36141458af2&hash=72e5ed53d1398abb831c3ceec263f18b'
 
   private api = 'http://localhost:8090/alianzaClient';
+  private logs = 'http://localhost:8090/logs';
 
   get(){
     const response =  this.http.post(`${this.api}/getAll`, null)
@@ -30,14 +31,21 @@ export class HeroService {
     return response;
   }
 
-  postDatos(datos: any) {
-    return this.http.post<any>('url_del_servicio', datos);
+  search(datos: any){
+    const response =  this.http.post(`${this.api}/serachBySharedKey`, datos)
+      .pipe(map((data: any) => data));
+      console.log(response);
+    return response;
   }
 
-  // search(name: string){
-  //   return this.http.get(`${this.api}nameStartsWith=${name}&${this.auth}`)
-  //     .pipe(map((data: any) => data.data.results))
-  // }
+  getLogs(){
+    const response =  this.http.post(`${this.logs}/getAll`, null)
+      .pipe(map((data: any) => data));
+      console.log(response);
+    return response;
+  }
+
+
 }
 
 

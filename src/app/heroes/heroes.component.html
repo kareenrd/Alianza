@@ -6,10 +6,12 @@
 
   <div class="row">
     <div class="col-9">
-      <div class="input-group">
-        <input type="text" class="form-control" placeholder="Enter shared Key">
-        <button class="btn btn-success" type="submit">Search <i class="fas fa-search"></i></button>
-      </div>
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Enter shared Key" formControlName="sharedKey">
+          <button class="btn btn-success" type="submit">Search <i class="fas fa-search"></i></button>
+        </div>
+      </form>
     </div>
     <div class="col">
       <button type="button" class="btn btn-outline-info">Advanced search <i class="fas fa-search"></i></button>
@@ -29,7 +31,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let super of superheroes">
+      <tr *ngFor="let super of client">
         <td>{{super.sharedKey}}</td>
         <td>{{super.businessId}}</td>
         <td>{{super.email}}</td>

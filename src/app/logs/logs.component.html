@@ -1,0 +1,23 @@
+<div class="container">
+  <button type="button" class="btn btn-outline-success m-3" (click)="exportexcel()">Export <i class="fas fa-download"></i></button>
+  <br>
+  <h2>Clients</h2>
+  <table class="table table-hover" id="logs">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>log</th>
+        <th>Create</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of logs">
+        <td>{{log.id}}</td>
+        <td>{{log.log}}</td>
+        <td>{{log.create}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

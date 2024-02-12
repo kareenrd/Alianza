@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { Hero } from './../models/heroe.model'
+import { Client } from './../models/heroe.model'
 import { HeroService } from '../services/hero.service';
 import * as XLSX from "xlsx";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-heroes',
@@ -11,21 +13,58 @@ import * as XLSX from "xlsx";
 
 export class HeroesComponent implements OnInit {
 
-  superheroes:Hero[] = [];
+  client:Client[] = [];
   fileName = 'Clients.xlsx';
+  form: FormGroup;
 
 
   constructor(
     private heroService: HeroService,
-  ) { }
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService
+  ) {
+    this.form = this.formBuilder.group({
+      sharedKey: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
     this.heroService.get().subscribe(
       data => {
         console.log('marvelService data: ',data);
-        this.superheroes = data;
+        if(data.code == 1){
+          this.toastr.success(data.message);
+          this.client = data.data;
+        // setTimeout(() => {
+        //   this.router.navigate(['/home']);
+        //   }, 5000)
+        } else {
+          this.toastr.error(data.message);
+        }
       });
 
+  }
+
+  submitForm() {
+    if (this.form.valid) {
+      console.log('Formulario válido');
+      console.log('Valores del formulario:', this.form.value);
+
+      this.heroService.search(this.form.value).subscribe(
+        data => {
+          if(data.code == 1){
+            this.toastr.success(data.message);
+            this.client = data.data;
+          // setTimeout(() => {
+          //   this.router.navigate(['/home']);
+          //   }, 5000)
+          } else {
+            this.toastr.error(data.message);
+          }
+        });
+    } else {
+      console.log('Formulario inválido');
+    }
   }
 
   exportexcel(): void
