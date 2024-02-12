@@ -1,0 +1,21 @@
+<div class="container">
+  <h2>Clients</h2>
+  <table class="table table-hover" id="clients">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>log</th>
+        <th>Create</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of logs">
+        <td>{{log.id}}</td>
+        <td>{{log.log}}</td>
+        <td>{{log.create}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

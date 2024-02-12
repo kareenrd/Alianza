@@ -1,4 +1,4 @@
-export interface Hero {
+export interface Client {
   id: string;
   sharedKey: string;
   businessId: string;
@@ -8,4 +8,10 @@ export interface Hero {
   endDate: string;
   create: string;
   update: string;
+}
+
+export interface Logs{
+  id: number;
+  log: string;
+  create: string;
 }

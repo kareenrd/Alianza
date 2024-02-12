@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HeroService } from '../services/hero.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-modal',
@@ -11,7 +12,11 @@ import { Router } from '@angular/router';
 export class ModalComponent {
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private heroService: HeroService, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private heroService: HeroService,
+    private toastr: ToastrService,
+    private router: Router) {
     this.form = this.formBuilder.group({
       businessId: ['', Validators.required],
       phone: ['', Validators.required],
@@ -24,6 +29,8 @@ export class ModalComponent {
   }
 
   submitForm() {
+    console.log(this.form.valid);
+
     if (this.form.valid) {
       console.log('Formulario válido');
       console.log('Valores del formulario:', this.form.value);
@@ -31,11 +38,22 @@ export class ModalComponent {
       this.heroService.addClient(this.form.value).subscribe(
         data => {
           console.log('marvelService data: ',data);
-          this.router.navigate(['/home']);
-          //this.superheroes = data;
+
+          if(data.code == 1){
+            this.toastr.success(data.message);
+
+          // setTimeout(() => {
+          //   this.router.navigate(['/home']);
+          //   }, 5000)
+          } else {
+            this.toastr.error(data.message);
+          }
+
+
         });
     } else {
       console.log('Formulario inválido');
+      this.toastr.info('Formulario inválido');
     }
   }
 }
