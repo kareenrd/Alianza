@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Logs } from './../models/heroe.model'
 import { HeroService } from '../services/hero.service';
 import { ToastrService } from 'ngx-toastr';
-<<<<<<< HEAD
 import * as XLSX from "xlsx";
-=======
->>>>>>> 0ad33acb85ea895cce010897047922746b4e3ba7
 
 
 @Component({
