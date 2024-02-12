@@ -1,0 +1,71 @@
+
+  <button type="button" class="btn btn-outline-primary m-3">New <i class="fas fa-plus"></i></button>
+  <button type="button" class="btn btn-outline-success m-3">Export <i class="fas fa-download"></i></button>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"  (click)="openModal()">Open modal</button>
+
+  <div class="row">
+    <div class="col-9">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Enter shared Key">
+        <button class="btn btn-success" type="submit">Search <i class="fas fa-search"></i></button>
+      </div>
+    </div>
+    <div class="col">
+      <button type="button" class="btn btn-outline-info">Advanced search <i class="fas fa-search"></i></button>
+    </div>
+  </div>
+  <br><br>
+  <h2>Clients</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Shared Key</th>
+        <th>Business ID</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Data Added</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let super of superheroes">
+        <td>{{super.sharedKey}}</td>
+        <td>{{super.businessId}}</td>
+        <td>{{super.email}}</td>
+        <td>{{super.phone}}</td>
+        <td>{{super.startDate}}</td>
+        <td><button type="button" class="btn btn-outline-primary btn-sm"><i class="fas fa-pen"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
