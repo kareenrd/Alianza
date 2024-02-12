@@ -17,15 +17,17 @@ export class HeroService {
   private api = 'http://localhost:8090/alianzaClient';
 
   get(){
-    //return this.http.get(`${this.api}`);
-
     const response =  this.http.post(`${this.api}/getAll`, null)
       .pipe(map((data: any) => data));
       console.log(response);
     return response;
+  }
 
-    //return this.http.post<any>(`${this.api}/getAll`, null);
-
+  addClient(datos: any){
+    const response =  this.http.post(`${this.api}/add`, datos)
+      .pipe(map((data: any) => data));
+      console.log(response);
+    return response;
   }
 
   postDatos(datos: any) {

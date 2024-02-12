@@ -1,7 +1,8 @@
+<!-- <app-menu></app-menu> -->
 
-  <button type="button" class="btn btn-outline-primary m-3">New <i class="fas fa-plus"></i></button>
-  <button type="button" class="btn btn-outline-success m-3">Export <i class="fas fa-download"></i></button>
-  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"  (click)="openModal()">Open modal</button>
+<div class="container">
+  <button type="button" class="btn btn-outline-primary m-3"><a href="/new">New <i class="fas fa-plus"></i></a></button>
+  <button type="button" class="btn btn-outline-success m-3" (click)="exportexcel()">Export <i class="fas fa-download"></i></button>
 
   <div class="row">
     <div class="col-9">
@@ -16,7 +17,7 @@
   </div>
   <br><br>
   <h2>Clients</h2>
-  <table class="table table-hover">
+  <table class="table table-hover" id="clients">
     <thead>
       <tr>
         <th>Shared Key</th>
@@ -38,32 +39,6 @@
       </tr>
     </tbody>
   </table>
-
-
-
-<!-- The Modal -->
-<div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Modal Heading</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        Modal body..
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
 </div>
 
 

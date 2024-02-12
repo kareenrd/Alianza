@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { Hero } from './../models/heroe.model'
 import { HeroService } from '../services/hero.service';
-import { PageEvent } from '@angular/material/paginator';
-
+import * as XLSX from "xlsx";
 
 @Component({
   selector: 'app-heroes',
@@ -13,16 +12,11 @@ import { PageEvent } from '@angular/material/paginator';
 export class HeroesComponent implements OnInit {
 
   superheroes:Hero[] = [];
-  search = '';
-
-  pageIndex = 0;
-  pageSize = 3;
-  totalRecords: number = 1562;
+  fileName = 'Clients.xlsx';
 
 
   constructor(
     private heroService: HeroService,
-    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -34,10 +28,20 @@ export class HeroesComponent implements OnInit {
 
   }
 
-  openModal(){
-    console.log('open modal');
-  }
+  exportexcel(): void
+  {
+    /* pass here the table id */
+    let element = document.getElementById('clients');
+    const ws: XLSX.WorkSheet =XLSX.utils.table_to_sheet(element);
 
+    /* generate workbook and add the worksheet */
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, this.fileName);
+
+  }
 
 
 }

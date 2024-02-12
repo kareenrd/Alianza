@@ -10,13 +10,16 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
 import { ModalComponent } from './modal/modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     MenuComponent,
-    ModalComponent
+    ModalComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { ModalComponent } from './modal/modal.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
 
   ],
   providers: [],
